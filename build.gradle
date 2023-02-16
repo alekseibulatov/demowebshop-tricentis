@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '2.10.0'
+    id 'io.freefair.lombok' version '6.0.0-m2'
 }
 
 group 'com.bulatov'
@@ -9,9 +11,20 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
 
+dependencies {
+    testImplementation (
+            'org.junit.jupiter:junit-jupiter:5.9.0',
+            'io.rest-assured:rest-assured:5.3.0',
+            'com.codeborne:selenide:6.10.1',
+            'com.fasterxml.jackson.core:jackson-databind:2.14.1',
+            'org.slf4j:slf4j-simple:2.0.6',
+            'io.qameta.allure:allure-rest-assured:2.19.0',
+            'org.jsoup:jsoup:1.15.3'
+    )
 }
 
 test {
